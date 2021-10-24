@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import styled from "styled-components";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./components/Home";
+import Crew from "./components/Crew";
+import Destination from "./components/Destination";
+import Technology from "./components/Technology";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Router>
+      <Header />
+      <Switch>
+        <Route exact path="/">
+          <Home/>
+        </Route>
+        <Route path="/destination">
+          <Destination/>
+        </Route>
+        <Route exact path="/crew">
+          <Crew/>
+        </Route>
+        <Route exact path="/technology">
+          <Technology/>
+        </Route>
+      </Switch>
+      </Router>
+    </Container>
   );
 }
 
 export default App;
+
+const Container = styled.main``;
