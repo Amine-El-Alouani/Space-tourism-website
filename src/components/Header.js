@@ -1,31 +1,41 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function Header() {
-
-  const [open,setOpen] = useState(true);
+  const [open, setOpen] = useState(true);
 
   return (
     <Container>
       <Logo src="/shared/logo.svg"></Logo>
-      <Nav open = {open}>
+      <Nav open={open}>
         <ul>
           <li>
-            <Link onClick = {() => setOpen(!open)} to="/">HOME</Link>
+            <Link onClick={() => setOpen(!open)} to="/">
+              HOME
+            </Link>
           </li>
           <li>
-            <Link onClick = {() => setOpen(!open)} to="/destination">DESTINATION</Link>
+            <Link onClick={() => setOpen(!open)} to="/destination">
+              DESTINATION
+            </Link>
           </li>
           <li>
-            <Link onClick = {() => setOpen(!open)} to="/crew">CREW</Link>
+            <Link onClick={() => setOpen(!open)} to="/crew">
+              CREW
+            </Link>
           </li>
           <li>
-            <Link onClick = {() => setOpen(!open)} to="/technology">TECHNOLOGY</Link>
+            <Link onClick={() => setOpen(!open)} to="/technology">
+              TECHNOLOGY
+            </Link>
           </li>
         </ul>
       </Nav>
-      <Humberger onClick = {() => setOpen(!open)} src={open ? "/shared/icon-close.svg" : "/shared/icon-hamburger.svg" }></Humberger>
+      <Humberger
+        onClick={() => setOpen(!open)}
+        src={open ? "/shared/icon-close.svg" : "/shared/icon-hamburger.svg"}
+      ></Humberger>
     </Container>
   );
 }
@@ -40,13 +50,19 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 768px) {
+    top: 0;
+  }
+  @media (max-width: 426px) {
+    top: 40px;
+  }
 `;
 
 const Logo = styled.img`
-@media (max-width: 375px) {
-  width: 40px;
-  height: 40px;
-}
+  @media (max-width: 426px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 const Nav = styled.nav`
@@ -65,10 +81,11 @@ const Nav = styled.nav`
     justify-content: center;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 426px) {
+    z-index: 100;
     position: fixed;
     top: 0;
-    right: ${({open}) => open ? "0" : "-100%"};
+    right: ${({ open }) => (open ? "0" : "-100%")};
     width: 65%;
     height: 100vh;
     padding-top: 120px;
@@ -93,7 +110,7 @@ const Nav = styled.nav`
     @media (max-width: 768px) {
       margin-left: 16px;
     }
-    @media (max-width: 375px) {
+    @media (max-width: 426px) {
       flex-wrap: wrap;
       flex-direction: column;
       margin: 0;
@@ -107,7 +124,7 @@ const Nav = styled.nav`
         margin-right: 40px;
       }
 
-      @media (max-width: 375px) {
+      @media (max-width: 426px) {
         margin-right: 0;
         padding-bottom: 40px;
       }
@@ -170,20 +187,18 @@ const Nav = styled.nav`
           opacity: 0;
           transform: scaleX(0);
           transition: all 250ms ease;
-
         }
 
         @media (max-width: 768px) {
           font-size: 14px;
         }
-        
-        @media (max-width: 375px) {
+
+        @media (max-width: 426px) {
           font-size: 16px;
-          &:after{
+          &:after {
             display: none;
           }
         }
-    
       }
     }
   }
@@ -191,9 +206,9 @@ const Nav = styled.nav`
 
 const Humberger = styled.img`
   display: none;
-  @media (max-width: 375px) {
+  @media (max-width: 426px) {
     display: flex;
-    z-index: 10;
+    z-index: 101;
     margin-right: 20px;
     transition: all 250ms ease;
 `;
